@@ -1,0 +1,18 @@
+runtime_parameters: []
+extension_packages:
+    install_operations:
+        - extensionType: do
+          extensionVersion: 1.16.0
+        - extensionType: as3
+          extensionVersion: 3.23.0
+        - extensionType: ts
+          extensionVersion: 1.15.0
+extension_services:
+    service_operations:
+    - extensionType: do
+      type: url
+      value: https://raw.githubusercontent.com/cavalen/acme/master/do.json
+    - extensionType: as3
+      type: url
+      value: https://raw.githubusercontent.com/cavalen/acme/master/as3.json
+

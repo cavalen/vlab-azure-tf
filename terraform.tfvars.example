@@ -1,0 +1,13 @@
+# Prefix for objects being created
+prefix = "cav"
+
+# BIG-IP Environment
+nodeuser = "azureuser"
+nodepass = "f5DEMOs4uLATAM"
+
+# Azure Environment
+sp_subscription_id = " ... "
+sp_client_id       = " ... "
+sp_client_secret   = " ... "
+sp_tenant_id       = " ... "
+location           = "eastus"

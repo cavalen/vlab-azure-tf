@@ -1,0 +1,250 @@
+{
+  "class": "AS3",
+  "action": "deploy",
+  "persist": true,
+  "declaration": {
+     "class": "ADC",
+     "schemaVersion": "3.0.0",
+     "id": "lmnopq23456",
+     "label": "F5 Networks - vLab",
+     "remark": "HTTP applications Declaration",
+     "Web_Apps": {
+        "class": "Tenant",
+        "vs_Hackazon_http_8080": {
+           "class": "Application",
+           "template": "generic",
+           "vs_Hackazon_http_8080": {
+              "class": "Service_HTTP",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "pool": "pool_hackazon_8080",
+              "virtualPort": 8080,
+              "shareAddresses": true
+           },
+           "pool_hackazon_8080": {
+              "class": "Pool",
+              "monitors": [
+                 "http"
+              ],
+              "members": [{
+                 "servicePort": 8080,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           }
+        },
+        "vs_dvwa_8081": {
+           "class": "Application",
+           "template": "generic",
+           "vs_dvwa_8081": {
+              "class": "Service_HTTP",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "pool": "pool_dvwa",
+              "virtualPort": 8081,
+              "shareAddresses": true
+           },
+           "pool_dvwa": {
+              "class": "Pool",
+              "monitors": [
+                 "tcp"
+              ],
+              "members": [{
+                 "servicePort": 8081,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           }
+        },
+        "vs_f5demoapp_8082": {
+           "class": "Application",
+           "template": "generic",
+           "vs_f5demoapp_8082": {
+              "class": "Service_HTTP",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "pool": "pool_f5demoapp",
+              "virtualPort": 8082,
+              "shareAddresses": true
+           },
+           "pool_f5demoapp": {
+              "class": "Pool",
+              "monitors": [
+                 "http"
+              ],
+              "members": [{
+                 "servicePort": 8082,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           }
+        },
+        "vs_juice_8083": {
+           "class": "Application",
+           "template": "generic",
+           "vs_juice_8083": {
+              "class": "Service_HTTP",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "pool": "pool_juice",
+              "virtualPort": 8083,
+              "shareAddresses": true
+           },
+           "pool_juice": {
+              "class": "Pool",
+              "monitors": [
+                 "http"
+              ],
+              "members": [{
+                 "servicePort": 8083,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           }
+        },
+        "vs_nginx_8084": {
+           "class": "Application",
+           "template": "generic",
+           "vs_nginx_8084": {
+              "class": "Service_HTTP",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "pool": "pool_nginx",
+              "virtualPort": 8084,
+              "shareAddresses": true
+           },
+           "pool_nginx": {
+              "class": "Pool",
+              "monitors": [
+                 "http"
+              ],
+              "members": [{
+                 "servicePort": 8084,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           }
+        },
+        "vs_bwAPP_8085": {
+           "class": "Application",
+           "template": "generic",
+           "vs_bwAPP_8085": {
+              "class": "Service_HTTP",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "pool": "pool_bwapp",
+              "virtualPort": 8085,
+              "shareAddresses": true
+           },
+           "pool_bwapp": {
+              "class": "Pool",
+              "monitors": [
+                 "tcp"
+              ],
+              "members": [{
+                 "servicePort": 8085,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           }
+        },         
+        "vs_hackazon_https_waf_8443": {
+           "class": "Application",
+           "template": "generic",
+           "vs_hackazon_https_waf_8443": {
+              "class": "Service_HTTPS",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "shareAddresses": true,
+              "redirect80": false,
+              "pool": "pool_hackazon_8443",
+              "clientTLS": "pTlsClient_Local",
+              "serverTLS": "pTlsServer_Local",
+              "virtualPort": 8443,
+              "securityLogProfiles": [
+                 {
+                    "bigip": "/Common/Log all requests"
+                 }
+              ],
+              "policyWAF": {
+                 "use": "vLabWAF"
+              }
+           },
+           "pool_hackazon_8443": {
+              "class": "Pool",
+              "monitors": [
+                 "http"
+              ],
+              "members": [{
+                 "servicePort": 8443,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           },
+           "vLabWAF": {
+                 "class": "WAF_Policy",
+                 "url": "https://raw.githubusercontent.com/cavalen/vlab-azure/master/files/waf_policy.json",
+                 "ignoreChanges": true
+              }, 
+           "pTlsServer_Local": {
+              "class": "TLS_Server",
+              "label": "simplest decl requires just cert",
+              "certificates": [
+                 {
+                    "certificate": "tlsserver_local_cert"
+                 }
+              ]
+           },
+           "pTlsClient_Local": {
+              "class": "TLS_Client",
+              "label": "simplest decl requires just cert",
+              "clientCertificate": "tlsserver_local_cert"
+           },            
+           "tlsserver_local_cert": {
+              "class": "Certificate",
+              "certificate": {"bigip":"/Common/default.crt"},
+              "privateKey": {"bigip":"/Common/default.key"}
+           }
+        },
+        "vs_BooksCatalogAPI_3000": {
+           "class": "Application",
+           "template": "generic",
+           "vs_BooksCatalogAPI_3000": {
+              "class": "Service_HTTP",
+              "virtualAddresses": [
+                 "10.1.10.246"
+              ],
+              "pool": "pool_bookscatalogapi",
+              "virtualPort": 3000,
+              "shareAddresses": true
+           },
+           "pool_bookscatalogapi": {
+              "class": "Pool",
+              "monitors": [
+                 "http"
+              ],
+              "members": [{
+                 "servicePort": 3000,
+                 "serverAddresses": [
+                    "10.1.10.80"
+                 ]
+              }]
+           }
+        }
+     }
+  }
+}
