@@ -159,7 +159,7 @@
                  ]
               }]
            }
-        },         
+        },
         "vs_hackazon_https_waf_8443": {
            "class": "Application",
            "template": "generic",
@@ -197,7 +197,7 @@
            },
            "vLabWAF": {
                  "class": "WAF_Policy",
-                 "url": "https://raw.githubusercontent.com/cavalen/vlab-azure/master/files/waf_policy.json",
+                 "url": "https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/waf_policy.json",
                  "ignoreChanges": true
               }, 
            "pTlsServer_Local": {
@@ -213,7 +213,7 @@
               "class": "TLS_Client",
               "label": "simplest decl requires just cert",
               "clientCertificate": "tlsserver_local_cert"
-           },            
+           },
            "tlsserver_local_cert": {
               "class": "Certificate",
               "certificate": {"bigip":"/Common/default.crt"},
