@@ -1,0 +1,77 @@
+{
+  "policy": {
+    "name": "vLabWAF-api",
+    "description": "DECLARATIVE Policy - API Protection ",
+    "template": {
+      "name": "POLICY_TEMPLATE_API_SECURITY"
+    },
+    "enforcementMode": "blocking",
+    "server-technologies": [
+      {
+        "serverTechnologyName": "Django"
+      },
+      {
+        "serverTechnologyName": "Unix/Linux"
+      },
+      {
+        "serverTechnologyName": "Node.js"
+      },
+      {
+        "serverTechnologyName": "Nginx"
+      }
+    ],
+    "general": {
+      "allowedResponseCodes": [ 404 ]
+    },
+    "signature-settings": {
+      "signatureStaging": false
+    },
+    "blocking-settings": {
+      "violations": [
+        {
+          "name": "VIOL_PARAMETER_EMPTY_VALUE",
+          "alarm": true,
+          "block": false,
+          "learn": true
+        }
+      ]
+    },    
+    "policy-builder": {
+      "learnOnlyFromNonBotTraffic": false
+    },
+    "parameters": [
+      {
+        "name": "format",
+        "type": "explicit",
+        "parameterLocation": "any",
+        "performStaging": false,
+        "allowEmptyValue": true
+      }
+    ],
+    "urls": [ 
+      {        
+        "name": "/favicon.ico",
+        "method": "GET",
+        "type": "explicit",
+        "performStaging": false
+      },
+      {        
+        "name": "/static/*",
+        "method": "GET",
+        "type": "wildcard",
+        "performStaging": false
+      }
+    ],
+    "data-guard": {
+      "enabled": "true",
+      "maskData": "true",
+      "creditCardNumbers": true,
+      "usSocialSecurityNumbers": false
+    },
+    "open-api-files": [
+      {
+        "link": "https://api.swaggerhub.com/apis/cavalen/starwars-api/1.0.0-oas3"
+      }
+    ]
+  }
+}
