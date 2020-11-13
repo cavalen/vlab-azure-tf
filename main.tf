@@ -16,41 +16,6 @@ terraform {
   }
 }
 
-/* 
-terraform {
-  required_version = ">= 0.13"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 2.1.0"
-    }
-    bigip = {
-      source = "f5networks/bigip"
-      version = "~> 1.3.2"
-    }
-    http = {
-      source = "hashicorp/http"
-      version = "~> 1.2.0"
-    }
-    local = {
-      source = "hashicorp/local"
-      version = "~> 1.4.0"
-    }
-    null = {
-      source = "hashicorp/null"
-      version = "~> 2.1.2"
-    }
-    random = {
-      source = "hashicorp/random"
-      version = "~> 2.3.0"
-    }
-    template = {
-      source = "hashicorp/template"
-      version = "~> 2.1.2"
-    }
-  }
-} */
-
 # Azure Provider
 provider "azurerm" {
   features {}
@@ -92,22 +57,25 @@ resource "azurerm_subnet" "subnets" {
   address_prefix       = each.value
 }
 
-# Generate random text for a unique storage account name
-resource "random_id" "randomId" {
+# Random 8 letter string to use in resource names
+resource "random_string" "random_str" {
+  length = 8
+  upper = false
+  special = false
+  number = false
   keepers = {
     # Generate a new ID only when a new resource group is defined
     resource_group = azurerm_resource_group.tfresourcegroup.name
   }
-  byte_length = 8
 }
 
 # Create Log Analytic Workspace
 # NOTE: Log Analytics Workspace : By default this is soft-removed (Stays in the Recycle Bin for 14 days) to delete use Powershell:
-# Remove-AzOperationalInsightsWorkspace -ResourceGroupName "cav-vlab-tf"  -Name "law-cav" -ForceDelete
+# Remove-AzOperationalInsightsWorkspace -ResourceGroupName "xxx-vlab-tf"  -Name "law-xxx" -ForceDelete
 # https://github.com/terraform-providers/terraform-provider-azurerm/issues/7282
 
 resource "azurerm_log_analytics_workspace" "law" {
-  name                = "${var.prefix}-law-${random_id.randomId.hex}"
+  name                = "law-${var.prefix}-${random_string.random_str.result}"
   sku                 = "PerNode"
   retention_in_days   = 300
   resource_group_name = azurerm_resource_group.tfresourcegroup.name
@@ -116,7 +84,7 @@ resource "azurerm_log_analytics_workspace" "law" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "mystorageaccount" {
-  name                     = "diag${random_id.randomId.hex}"
+  name                     = "sa-${var.prefix}-${random_string.random_str.result}"
   resource_group_name      = azurerm_resource_group.tfresourcegroup.name
   location                 = var.location
   account_tier             = "Standard"
