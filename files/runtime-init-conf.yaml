@@ -11,8 +11,8 @@ extension_services:
     service_operations:
     - extensionType: do
       type: url
-      value: https://raw.githubusercontent.com/cavalen/acme/master/do.json
+      value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/do.json
     - extensionType: as3
       type: url
-      value: https://raw.githubusercontent.com/cavalen/acme/master/as3.json
+      value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/as3.json
 
