@@ -37,6 +37,17 @@
             "ltm": "nominal",
             "asm": "nominal"
         },
+        "anotherUser": {
+            "class": "User",
+            "userType": "regular",
+            "password": "f4DEMOs4uLATAM",
+            "shell": "none",
+            "partitionAccess": {
+                "all-partitions": {
+                    "role": "guest"
+                }
+            }
+        },           
         "external": {
             "class": "VLAN",
             "tag": 4094,
