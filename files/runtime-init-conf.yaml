@@ -1,4 +1,15 @@
 runtime_parameters: []
+pre_onboard_enabled:
+  - name: provision_rest
+    type: inline
+    commands:
+      - /usr/bin/setdb provision.extramb 500
+      - /usr/bin/setdb restjavad.useextramb true
+  - name: change_setting
+    type: inline
+    commands:
+      - tmsh modify sys db ui.system.preferences.recordsperscreen value 100
+      - tmsh modify sys httpd auth-pam-idle-timeout 12000
 extension_packages:
     install_operations:
         - extensionType: do
@@ -15,4 +26,3 @@ extension_services:
     - extensionType: as3
       type: url
       value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/as3.json
-
