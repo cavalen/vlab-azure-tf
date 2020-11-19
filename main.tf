@@ -29,7 +29,7 @@ provider "azurerm" {
 # Fails if IPv6 :(
 data "http" "myip" {
   #url = "http://ifconfig.co"
-  url = "text.ipv4.wtfismyip.com"
+  url = "https://text.ipv4.wtfismyip.com"
 
   request_headers = {
     Accept = "text/plain"
