@@ -16,7 +16,7 @@
         "myDns": {
             "class": "DNS",
             "nameServers": [
-                "${dns_server}",
+                "8.8.8.8",
                 "2001:4860:4860::8844"
             ],
             "search": [
@@ -26,11 +26,11 @@
         "myNtp": {
             "class": "NTP",
             "servers": [
-                "${ntp_server}",
+                "0.pool.ntp.org",
                 "1.pool.ntp.org",
                 "2.pool.ntp.org"
             ],
-            "timezone": "${timezone}"
+            "timezone": "UTC"
         },
         "myProvisioning": {
             "class": "Provision",
@@ -50,14 +50,14 @@
         },
         "external-localself": {
             "class": "SelfIp",
-            "address": "${local_selfip}/24",
+            "address": "10.1.10.245/24",
             "vlan": "external",
             "allowService": "default",
             "trafficGroup": "traffic-group-local-only"
         },
         "default": {
             "class": "Route",
-            "gw": "${gateway}",
+            "gw": "10.1.10.1",
             "network": "default",
             "mtu": 1500
         }
