@@ -59,9 +59,9 @@ resource "azurerm_subnet" "subnets" {
   address_prefix       = each.value
 }
 
-# Random 8 letter string to use in resource names
+# Random 10 letter string to use in resource names
 resource "random_string" "random_str" {
-  length = 8
+  length = 10
   upper = false
   special = false
   number = false
@@ -86,7 +86,7 @@ resource "azurerm_log_analytics_workspace" "law" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "mystorageaccount" {
-  name                     = "sa${var.prefix}${random_string.random_str.result}"
+  name                     = "sac${random_string.random_str.result}"
   resource_group_name      = azurerm_resource_group.tfresourcegroup.name
   location                 = var.location
   account_tier             = "Standard"
