@@ -31,7 +31,7 @@
                   {
                      "servicePort":8080,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
@@ -58,7 +58,7 @@
                   {
                      "servicePort":8081,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
@@ -85,7 +85,7 @@
                   {
                      "servicePort":8082,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
@@ -112,7 +112,7 @@
                   {
                      "servicePort":8083,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
@@ -139,7 +139,7 @@
                   {
                      "servicePort":8084,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
@@ -166,7 +166,7 @@
                   {
                      "servicePort":8085,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
@@ -207,7 +207,7 @@
                   {
                      "servicePort":8443,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
@@ -267,7 +267,7 @@
                   {
                      "servicePort":3000,
                      "serverAddresses":[
-                        "{{{ SERVER }}}"
+                        "{{{ NODE }}}"
                      ]
                   }
                ]
