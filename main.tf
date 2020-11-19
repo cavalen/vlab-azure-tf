@@ -27,7 +27,8 @@ provider "azurerm" {
 
 # Get public IP
 data "http" "myip" {
-  url = "http://ifconfig.co"
+  #url = "http://ifconfig.co"
+  url = "text.ipv4.wtfismyip.com"
 
   request_headers = {
     Accept = "text/plain"
@@ -84,7 +85,7 @@ resource "azurerm_log_analytics_workspace" "law" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "mystorageaccount" {
-  name                     = "sa-${var.prefix}-${random_string.random_str.result}"
+  name                     = "sa${var.prefix}${random_string.random_str.result}"
   resource_group_name      = azurerm_resource_group.tfresourcegroup.name
   location                 = var.location
   account_tier             = "Standard"
