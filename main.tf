@@ -85,6 +85,8 @@ resource "azurerm_log_analytics_workspace" "law" {
 }
 
 # Create storage account for boot diagnostics
+# Name must be between 3 and 24 characters in length and may contain numbers and lowercase letters only
+
 resource "azurerm_storage_account" "mystorageaccount" {
   name                     = "sac${random_string.random_str.result}"
   resource_group_name      = azurerm_resource_group.tfresourcegroup.name
