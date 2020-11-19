@@ -8,7 +8,7 @@ https://github.com/F5Networks/f5-bigip-runtime-init/blob/main/SCHEMA.md
 
 Instrucciones:
 - Copiar `terraform.tfvars.example` a `terraform.tfvars` 
-- Editar `terraform.tfvars` y configurar:
+- Editar `terraform.tfvars` y modificar:
   - Prefix (letras minusculas y numeros)
   - [Subscription ID](https://portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
   - [Client ID (Application ID)](https://portal.azure.com/?quickstart=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
