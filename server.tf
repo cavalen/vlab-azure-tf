@@ -64,7 +64,7 @@ resource "azurerm_network_interface_security_group_association" "servernic-nsg" 
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "tfservervm" {
-    name                            = "server_vm"
+    name                            = "server-vm"
     location                        = var.location
     resource_group_name             = azurerm_resource_group.tfresourcegroup.name
     network_interface_ids           = [azurerm_network_interface.servernic.id]

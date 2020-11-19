@@ -4,7 +4,7 @@
 
 # Create Public IPs
 resource "azurerm_public_ip" "vm01mgmtpip" {
-  name                = "${var.prefix}-vm01-mgmt-pip"
+  name                = "bigip-${var.prefix}-mgmt-pip"
   location            = azurerm_resource_group.tfresourcegroup.location
   sku                 = "Standard"
   resource_group_name = azurerm_resource_group.tfresourcegroup.name
@@ -22,7 +22,7 @@ resource "azurerm_public_ip" "vm01mgmtpip" {
 }
 
 resource "azurerm_public_ip" "vm01selfpip" {
-  name                = "${var.prefix}-vm01-self-pip"
+  name                = "bigip-${var.prefix}-self-pip"
   location            = azurerm_resource_group.tfresourcegroup.location
   sku                 = "Standard"
   resource_group_name = azurerm_resource_group.tfresourcegroup.name
@@ -39,7 +39,7 @@ resource "azurerm_public_ip" "vm01selfpip" {
 }
 
 resource "azurerm_public_ip" "vm01pubvippip" {
-  name                = "${var.prefix}-pubvip-pip"
+  name                = "bigip-${var.prefix}-pubvip-pip"
   location            = azurerm_resource_group.tfresourcegroup.location
   sku                 = "Standard"
   resource_group_name = azurerm_resource_group.tfresourcegroup.name
@@ -57,7 +57,7 @@ resource "azurerm_public_ip" "vm01pubvippip" {
 
 # Create BIG-IP Network Security Group and rules
 resource "azurerm_network_security_group" "vm01nsg" {
-  name                = "vm01-nsg"
+  name                = "bigip-${var.prefix}-nsg"
   location            = var.location
   resource_group_name = azurerm_resource_group.tfresourcegroup.name
 
@@ -88,7 +88,7 @@ resource "azurerm_network_security_group" "vm01nsg" {
 
 # Create NIC for Management 
 resource "azurerm_network_interface" "vm01-mgmt-nic" {
-  name                = "${var.prefix}-mgmt0"
+  name                = "bigip-${var.prefix}-nic-mgmt"
   location            = azurerm_resource_group.tfresourcegroup.location
   resource_group_name = azurerm_resource_group.tfresourcegroup.name
 
@@ -112,7 +112,7 @@ resource "azurerm_network_interface" "vm01-mgmt-nic" {
 
 # Create NIC for External
 resource "azurerm_network_interface" "vm01-ext-nic" {
-  name                 = "${var.prefix}-ext0"
+  name                 = "bigip-${var.prefix}-nic-ext"
   location             = azurerm_resource_group.tfresourcegroup.location
   resource_group_name  = azurerm_resource_group.tfresourcegroup.name
   enable_ip_forwarding = true
@@ -164,7 +164,7 @@ resource "azurerm_network_interface_security_group_association" "vm01-ext-nsg" {
 
 # Create F5 BIG-IP VMs
 resource "azurerm_linux_virtual_machine" "f5vm01" {
-  name                            = "${var.prefix}-f5vm01"
+  name                            = "bigip-${var.prefix}-vm01"
   location                        = azurerm_resource_group.tfresourcegroup.location
   resource_group_name             = azurerm_resource_group.tfresourcegroup.name
   network_interface_ids           = [azurerm_network_interface.vm01-mgmt-nic.id, azurerm_network_interface.vm01-ext-nic.id]
@@ -176,7 +176,7 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
   #custom_data                     = base64encode(data.template_file.vm_onboard.rendered)
 
   os_disk {
-    name                 = "${var.prefix}-vm01-osdisk"
+    name                 = "big-ip-${var.prefix}-vm01-osdisk"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
