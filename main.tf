@@ -26,6 +26,7 @@ provider "azurerm" {
 }
 
 # Get public IP
+# Fails if IPv6 :(
 data "http" "myip" {
   #url = "http://ifconfig.co"
   url = "text.ipv4.wtfismyip.com"
