@@ -181,7 +181,10 @@
               ],
               "policyWAF": {
                  "use": "vLabWAF"
-              }
+              },
+              "iRules": [
+                "iRule_InsertHeader"
+              ]
            },
            "pool_hackazon_8443": {
               "class": "Pool",
@@ -194,6 +197,11 @@
                     "10.1.10.80"
                  ]
               }]
+           },
+				   "iRule_InsertHeader": {
+             "class": "iRule",
+             "remark": "Insert headers to response",
+             "iRule": "when HTTP_RESPONSE {\nHTTP::header insert X-CustomHeader [IP::client_addr]\n HTTP::header replace Server GOSMARTER\n}"
            },
            "vLabWAF": {
                  "class": "WAF_Policy",
