@@ -29,9 +29,9 @@ extension_packages:
           extensionVersion: 1.15.0
 extension_services:
     service_operations:
-    - extensionType: as3
-      type: url
-      value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/as3.tmpl.json
     - extensionType: do
       type: url
       value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/do.tmpl.json
+    - extensionType: as3
+      type: url
+      value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/as3.tmpl.json      
