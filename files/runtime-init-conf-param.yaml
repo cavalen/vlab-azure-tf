@@ -1,0 +1,20 @@
+runtime_parameters:
+  - name: VIP
+    type: static
+    value: VIPVALUE
+  - name: NODE
+    type: static
+    value: NODEVALUE
+  - name: SELFIP
+    type: static
+    value: SELFIPVALUE
+extension_packages:
+    install_operations: []
+extension_services:
+    service_operations:
+    - extensionType: as3
+      type: url
+      value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/as3.tmpl.json
+    - extensionType: do
+      type: url
+      value: https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/do.tmpl.json
