@@ -3,6 +3,7 @@ resource "azurerm_kubernetes_cluster" "akscluster" {
     location            = azurerm_resource_group.tfresourcegroup.location
     resource_group_name = azurerm_resource_group.tfresourcegroup.name
     dns_prefix          = "k8s-${var.prefix}-${random_string.random_str.result}"
+    //kubernetes_version = "value"
 
     default_node_pool {
         name            = "default"

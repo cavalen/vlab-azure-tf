@@ -19,7 +19,7 @@ sudo docker run --name bwaap --restart=unless-stopped -d -p 8085:80 raesene/bwap
 cd /home/azureuser/
 git clone https://github.com/wurstmeister/kafka-docker
 rm -f /home/azureuser/kafka-docker/docker-compose.yml
-curl https://raw.githubusercontent.com/cavalen/vlab-azure/master/files/docker-compose.yml -o /home/azureuser/kafka-docker/docker-compose.yml
+curl https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/docker-compose.yml -o /home/azureuser/kafka-docker/docker-compose.yml
 cd /home/azureuser/kafka-docker/
 sudo docker-compose up -d
 
