@@ -97,7 +97,7 @@ resource "azurerm_virtual_machine_extension" "tfservervm-script" {
     type_handler_version = "2.0"
     settings = <<SETTINGS
         {
-            "fileUris": ["https://raw.githubusercontent.com/cavalen/vlab-azure/master/files/config_server.sh"],
+            "fileUris": ["https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/config_server.sh" ],
             "commandToExecute": "nohup sh config_server.sh </dev/null >/dev/null 2>&1 & "
         }
     SETTINGS
