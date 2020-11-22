@@ -24,7 +24,7 @@ cd /home/azureuser/kafka-docker/
 sudo docker-compose up -d
 
 # Book Catalog API - Lab API Protection - Port TCP:3000
-cd /home/f5student/
+cd /home/azureuser/
 git clone https://github.com/cavalen/bookscatalog
 cd ./bookscatalog
 sudo docker-compose up -d

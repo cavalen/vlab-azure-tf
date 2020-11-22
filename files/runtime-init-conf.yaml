@@ -10,6 +10,7 @@ pre_onboard_enabled:
     commands:
       - tmsh modify sys db ui.system.preferences.recordsperscreen value 100
       - tmsh modify sys httpd auth-pam-idle-timeout 12000
+      - tmsh modify sys db ui.advisory.text value "Azure - bigip.example.com"
 extension_packages:
     install_operations:
         - extensionType: do
