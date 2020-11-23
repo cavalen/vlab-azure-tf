@@ -6,6 +6,6 @@ extension_packages:
         - extensionType: as3
           extensionVersion: 3.23.0
         - extensionType: ts
-          extensionVersion: 1.17.0
+          extensionVersion: 1.15.0
 extension_services:
     service_operations: []
