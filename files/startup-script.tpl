@@ -23,7 +23,7 @@ pre_onboard_enabled:
     type: inline
     commands:
       - tmsh modify sys db ui.system.preferences.recordsperscreen value 100
-      - tmsh modify sys db ui.advisory.text value "Azure - bigip.example.com"
+      - tmsh modify sys db ui.advisory.text value "Azure ${prefix}- bigip.example.com"
 extension_packages:
     install_operations:
         - extensionType: do
@@ -45,5 +45,4 @@ extension_services:
 EOF
 
 curl https://cdn.f5.com/product/cloudsolutions/f5-bigip-runtime-init/v1.1.0/dist/f5-bigip-runtime-init-1.1.0-1.gz.run -o f5-bigip-runtime-init-1.1.0-1.gz.run && bash f5-bigip-runtime-init-1.1.0-1.gz.run -- '--cloud azure'
-
 f5-bigip-runtime-init --config-file /config/cloud/runtime-init-conf.yaml

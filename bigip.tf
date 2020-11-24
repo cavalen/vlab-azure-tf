@@ -9,7 +9,7 @@ resource "azurerm_public_ip" "vm01mgmtpip" {
   sku                 = "Standard"
   resource_group_name = azurerm_resource_group.tfresourcegroup.name
   allocation_method   = "Static"
-  domain_name_label   = "f5-${var.prefix}"
+  domain_name_label   = "bigip-${var.prefix}"
 
   tags = {
     Name        = "${var.environment}-vm01-mgmt-public-ip"
