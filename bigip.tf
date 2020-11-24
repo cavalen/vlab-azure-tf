@@ -174,6 +174,7 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
   disable_password_authentication = false
   computer_name                   = "${var.prefix}vm01"
   #custom_data                     = base64encode(data.template_file.vm_onboard.rendered)
+  #custom_data                     = filebase64("${path.module}/files/install-runtime-init.sh")
 
   os_disk {
     name                 = "big-ip-${var.prefix}-vm01-osdisk"
@@ -219,11 +220,20 @@ resource "azurerm_virtual_machine_extension" "f5vm01-run-startup-cmd" {
   settings = <<SETTINGS
         {   
         "fileUris": [
-            "https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/runtime-init-conf-param.yaml"
+            "https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/runtime-init-conf.yaml"
         ],
-        "commandToExecute": "mkdir -p /config/cloud; mkdir -p /var/log/cloud/azure; cp runtime-init-conf-param.yaml /config/cloud/runtime-init-conf.yaml; sed -i -- 's/VIPVALUE/${var.f5publicvip}/g' /config/cloud/runtime-init-conf.yaml; sed -i -- 's/NODEVALUE/${var.serverip}/g' /config/cloud/runtime-init-conf.yaml; sed -i -- 's/SELFIPVALUE/${var.f5vm01ext}/g' /config/cloud/runtime-init-conf.yaml; curl -L https://cdn.f5.com/product/cloudsolutions/f5-bigip-runtime-init/v1.0.0/dist/f5-bigip-runtime-init-1.0.0-1.gz.run -o f5-bigip-runtime-init-1.0.0-1.gz.run && bash f5-bigip-runtime-init-1.0.0-1.gz.run -- '--cloud azure' 2>&1; f5-bigip-runtime-init --config-file /config/cloud/runtime-init-conf.yaml 2>&1"
+        "commandToExecute": "mkdir -p /config/cloud; mkdir -p /var/log/cloud/azure; cp runtime-init-conf.yaml /config/cloud/runtime-init-conf.yaml; curl https://cdn.f5.com/product/cloudsolutions/f5-bigip-runtime-init/v1.1.0/dist/f5-bigip-runtime-init-1.1.0-1.gz.run -o f5-bigip-runtime-init-1.1.0-1.gz.run && bash f5-bigip-runtime-init-1.1.0-1.gz.run -- '--cloud azure' 2>&1; f5-bigip-runtime-init --config-file /config/cloud/runtime-init-conf.yaml 2>&1"
         }
     SETTINGS
+
+#  settings = <<SETTINGS
+#        {   
+#        "fileUris": [
+#            "https://raw.githubusercontent.com/cavalen/vlab-azure-tf/master/files/runtime-init-conf-param.yaml"
+#        ],
+#        "commandToExecute": "mkdir -p /config/cloud; mkdir -p /var/log/cloud/azure; cp runtime-init-conf-param.yaml /config/cloud/runtime-init-conf.yaml; sed -i -- 's/VIPVALUE/${var.f5publicvip}/g' /config/cloud/runtime-init-conf.yaml; sed -i -- 's/NODEVALUE/${var.serverip}/g' /config/cloud/runtime-init-conf.yaml; sed -i -- 's/SELFIPVALUE/${var.f5vm01ext}/g' /config/cloud/runtime-init-conf.yaml; curl https://cdn.f5.com/product/cloudsolutions/f5-bigip-runtime-init/v1.1.0/dist/f5-bigip-runtime-init-1.1.0-1.gz.run -o f5-bigip-runtime-init-1.1.0-1.gz.run && bash f5-bigip-runtime-init-1.1.0-1.gz.run -- '--cloud azure' 2>&1; f5-bigip-runtime-init --config-file /config/cloud/runtime-init-conf.yaml 2>&1"        
+#        }
+#    SETTINGS
 
   tags = {
     Name        = "${var.environment}-f5vm01-startup-cmd"
