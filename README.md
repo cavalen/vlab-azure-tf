@@ -6,6 +6,7 @@ Configuracion de DO y AS3 usando BIG-IP Runtime Init
 https://github.com/F5Networks/f5-bigip-runtime-init \
 https://github.com/F5Networks/f5-bigip-runtime-init/blob/main/SCHEMA.md 
 
+Diferentes opciones de runtime init en la carpeta *files*
 Instrucciones:
 - Copiar `terraform.tfvars.example` a `terraform.tfvars` 
 - Editar `terraform.tfvars` y modificar:
