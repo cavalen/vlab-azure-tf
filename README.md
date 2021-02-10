@@ -16,8 +16,8 @@ Instrucciones:
   - [Secret (Client Secret)](https://portal.azure.com/?quickstart=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
   - [Tenant ID (Directory ID)](https://portal.azure.com/?quickstart=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)
 
-terraform init
-terraform plan
+terraform init\
+terraform plan\
 terraform apply
 
 Notes:
