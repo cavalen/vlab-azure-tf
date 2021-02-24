@@ -52,20 +52,29 @@ variable rest_vm_as3_file { default = "vm01_as3_data.json" }
 variable rest_ts_uri { default = "/mgmt/shared/telemetry/declare" }
 variable rest_vm_ts_file { default = "vm01_ts_data.json" }
 
-# BIGIP Image - PAYG
+# BIGIP Image - PAYG 
+#    List of all images ---> az vm image list --output table --publisher f5-networks --all
+#variable instance_type { default = "Standard_DS4_v2" }
+#variable image_name { default = "f5-bigip-virtual-edition-25m-best-hourly" }
+#variable product { default = "f5-big-ip-best" }
+#variable bigip_version { default = "15.1.004000" }
+#variable license1 { default = "" }
+
+# BIGIP Image - PAYG (AWAF)
+#    List of all images ---> az vm image list --output table --publisher f5-networks --all
 variable instance_type { default = "Standard_DS4_v2" }
-variable image_name { default = "f5-bigip-virtual-edition-25m-best-hourly" }
-variable product { default = "f5-big-ip-best" }
-variable bigip_version { default = "15.1.004000" }
+variable image_name { default = "f5-bigip-virtual-edition-25m-waf-hourly" }
+variable product { default = "f5-big-ip-advanced-waf" }
+variable bigip_version { default = "15.1.200000" }
 variable license1 { default = "" }
 
-/* # BIGIP Image - BYOL
-variable instance_type { default = "Standard_DS4_v2" }
-variable image_name { default = "f5-big-all-1slot-byol" }
-variable product { default = "f5-big-ip-byol" }
-variable bigip_version { default = "15.1.004000" }
-variable license1 { default = "XXXX-XXXX-XXXX-XXXX" }
-*/
+## BIGIP Image - BYOL
+#variable instance_type { default = "Standard_DS4_v2" }
+#variable image_name { default = "f5-big-all-1slot-byol" }
+#variable product { default = "f5-big-ip-byol" }
+#variable bigip_version { default = "15.1.004000" }
+#variable license1 { default = "XXXX-XXXX-XXXX-XXXX" }
+
 
 # BIGIP Setup
 variable host1_name { default = "f5vm01" }
