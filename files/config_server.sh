@@ -14,6 +14,7 @@ sudo docker run --name f5demoapp --restart unless-stopped -d -p 8082:80 -e F5DEM
 sudo docker run --name juice-shop --restart=unless-stopped -d -p 8083:3000 bkimminich/juice-shop
 sudo docker run --name nginx01 --restart=unless-stopped -d -p 8084:80 nginx:latest
 sudo docker run --name bwapp --restart=unless-stopped -d -p 8085:80 raesene/bwapp
+#sudo docker run --name httpbin --restart=unless-stopped -d -p 80:80 kennethreitz/httpbin
 
 # Kafka Container - for Telemetry Streaming
 cd /home/azureuser/
