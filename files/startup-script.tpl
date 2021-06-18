@@ -44,5 +44,5 @@ extension_services:
 
 EOF
 
-curl https://cdn.f5.com/product/cloudsolutions/f5-bigip-runtime-init/v1.1.0/dist/f5-bigip-runtime-init-1.1.0-1.gz.run -o f5-bigip-runtime-init-1.1.0-1.gz.run && bash f5-bigip-runtime-init-1.1.0-1.gz.run -- '--cloud azure'
+curl https://cdn.f5.com/product/cloudsolutions/f5-bigip-runtime-init/v1.2.1/dist/f5-bigip-runtime-init-1.2.1-1.gz.run -o f5-bigip-runtime-init-1.2.1-1.gz.run && bash f5-bigip-runtime-init-1.2.1-1.gz.run -- '--cloud azure'
 f5-bigip-runtime-init --config-file /config/cloud/runtime-init-conf.yaml
