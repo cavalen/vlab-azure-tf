@@ -15,6 +15,7 @@ sudo docker run --name juice-shop --restart=unless-stopped -d -p 8083:3000 bkimm
 sudo docker run --name nginx01 --restart=unless-stopped -d -p 8084:80 nginx:latest
 sudo docker run --name bwapp --restart=unless-stopped -d -p 8085:80 raesene/bwapp
 #sudo docker run --name httpbin --restart=unless-stopped -d -p 80:80 kennethreitz/httpbin
+#sudo docker run --name httpecho --restart=unless-stopped -d -p 8080:8080 -p 8443:8443 mendhak/http-https-echo:22
 
 # Kafka Container - for Telemetry Streaming
 cd /home/azureuser/
