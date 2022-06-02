@@ -62,12 +62,18 @@ variable rest_vm_ts_file { default = "vm01_ts_data.json" }
 
 # BIGIP Image - PAYG (AWAF)
 #    List of all images ---> az vm image list --output table --publisher f5-networks --all
-variable instance_type { default = "Standard_DS4_v2" }
+#variable instance_type { default = "Standard_DS4_v2" }
 #variable image_name { default = "f5-big-awf-plus-hourly-25mbps" }
 #variable product { default = "f5-big-ip-advanced-waf" }
+#variable bigip_version { default = "16.1.000000" }
+#variable license1 { default = "" }
+
+# BIGIP Image - PAYG
+#    List of all images ---> az vm image list --output table --publisher f5-networks --all
+variable instance_type { default = "Standard_DS4_v2" }
 variable image_name { default = "f5-bigip-virtual-edition-25m-best-hourly" }
-variable product { default = "f5-big-ip-best"" }
-variable bigip_version { default = "16.1.000000" }
+variable product { default = "f5-big-ip-best" }
+variable bigip_version { default = "16.1.100000" }
 variable license1 { default = "" }
 
 ## BIGIP Image - BYOL
